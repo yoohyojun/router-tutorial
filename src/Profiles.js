@@ -1,9 +1,10 @@
 import React from 'react';
-import {Link, Route, Routes} from 'react-router-dom';
+import {Link, Route, Routes, NavLink} from 'react-router-dom';
 import Profile from './Profile';
 import Home from "./Home";
 import About from "./About";
 import HistorySample from "./HistorySample";
+import WithRouterSample from "./withRouterSample";
 
 const Profiles = () => {
     return (
@@ -11,16 +12,24 @@ const Profiles = () => {
             <h3>유저 목록:</h3>
             <ul>
                 <li>
-                    <Link to="/profiles/velopert">velopert</Link>
+                    <NavLink
+                        to="/profiles/velopert"
+                        style={({ isActive }) => ({ color: isActive ? 'red' : undefined })}
+                    >velopert</NavLink>
                 </li>
                 <li>
-                    <Link to="/profiles/gildong">gildong</Link>
+                    <NavLink
+                        to="/profiles/gildong"
+                        style={({ isActive }) => ({ color: isActive ? 'red' : undefined })}
+                    >gildong</NavLink>
                 </li>
             </ul>
             <Routes>
                 <Route path=':username' element={<Profile/>} />
             </Routes>
+            <WithRouterSample></WithRouterSample>
         </div>
+
 
     );
 }
